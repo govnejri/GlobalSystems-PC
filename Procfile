@@ -1,0 +1,1 @@
+web gunicorn GlobalSystems-PC.wsgi:application --log-file -
