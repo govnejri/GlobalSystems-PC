@@ -1,0 +1,75 @@
+{% load static %}
+<!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="{% url 'home' %}"><img class="navbar-brand" src="{% static 'logo.png' %}" alt="Logo" height="75" width="75"></a>
+                <a class="navbar-brand" href="{% url 'home' %}">GlobalSystems PC</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'search' %}">Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+
+            {% if user.is_authenticated %}
+                <a class="nav-link " href="{% url 'chatbot' %}">AI chatbot</a>
+   <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'update_user' %}">User Profile</a></li>
+                <li><hr class="dropdown-divider" /></li>
+<li><a class="dropdown-item" href="{% url 'update_info'  %}">User Info</a></li>
+                            </ul>
+                        </li>
+
+
+               <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+               <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+
+               <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+
+            {% endif %}
+
+                        
+
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'category_summary' %}">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Video card' %}">Programming Books</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'CPU' %}">CPU</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Mouse & Keyboard' %}">Mouse & Keyboard</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Motherboard' %}">Motherboard</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'DDR' %}">DDR</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Monitor' %}">Monitor</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Microphone' %}">Microphone</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Game Pad' %}">Game Pad</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Speaker' %}">Speaker</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'HDMI' %}">HDMI</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'CASE' %}">CASE</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category' 'Power Supply' %}">Power Supply</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+
+<a href="{% url 'cart_summary' %}" class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i>
+                            Cart
+<span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}
+
+</span></a>
+
+
+                        
+                    </form>
+                </div>
+            </div>
+        </nav>
